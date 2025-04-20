@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Portal - DIAS</title>
+    <link rel="stylesheet" href="homepage.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="top-bar">
+        <div class="logo">DIAS</div>
+        <div class="user-profile">
+            <button><i class="fa-regular fa-user"></i></button>
+        </div>
+    </header>
+
+    <main class="main-section">
+        <div class="card">
+            <h2>View Attendance</h2>
+            <select id="viewOption">
+                <option value="">Select View Type</option>
+                <option value="student">Student-wise</option>
+                <option value="class">Class-wise</option>
+                <option value="subject">Subject-wise</option>
+            </select>
+
+            <div class="form-section" id="studentForm" style="display:none;">
+                <input type="text" placeholder="Enrollment No" />
+                <input type="text" placeholder="Student Name" />
+                <input type="text" placeholder="Class" />
+            </div>
+
+            <div class="form-section" id="classForm" style="display:none;">
+                <select>
+                    <option>Select Class</option>
+                    <option>Class A</option>
+                    <option>Class B</option>
+                    <option>Class C</option>
+                </select>
+            </div>
+
+            <div class="form-section" id="subjectForm" style="display:none;">
+                <select>
+                    <option>Select Subject</option>
+                    <option>Math</option>
+                    <option>Science</option>
+                    <option>English</option>
+                </select>
+                
+            </div>
+            <button class="action-btn">View</button>
+        </div>
+
+        </div>
+
+        
+
+        <div class="card">
+            <h2>Modify Attendance</h2>
+            <select id="modifyOption">
+                <option value="">Select Modify Option</option>
+                <option value="decrease">Decrease Denominator</option>
+                <option value="add">Add Attendance</option>
+            </select>
+
+            <div class="form-section" id="decreaseForm" style="display:none;">
+                <input type="text" placeholder="Enrollment No" />
+                <input type="text" placeholder="Student Name" />
+                <select>
+                    <option>Select Subject</option>
+                    <option>Math</option>
+                    <option>Science</option>
+                    <option>English</option>
+                </select>
+            </div>
+
+            <div class="form-section" id="addForm" style="display:none;">
+                <input type="text" placeholder="Enrollment No" />
+                <input type="text" placeholder="Student Name" />
+                <select>
+                    <option>Select Subject</option>
+                    <option>Math</option>
+                    <option>Science</option>
+                    <option>English</option>
+                </select>
+            </div>
+            <button class="action-btn">Modify</button>
+        </div>
+    </main>
+
+    <script>
+        const viewOption = document.getElementById('viewOption');
+        const modifyOption = document.getElementById('modifyOption');
+
+        viewOption.addEventListener('change', () => {
+            document.getElementById('studentForm').style.display = viewOption.value === 'student' ? 'block' : 'none';
+            document.getElementById('classForm').style.display = viewOption.value === 'class' ? 'block' : 'none';
+            document.getElementById('subjectForm').style.display = viewOption.value === 'subject' ? 'block' : 'none';
+        });
+
+        modifyOption.addEventListener('change', () => {
+            document.getElementById('decreaseForm').style.display = modifyOption.value === 'decrease' ? 'block' : 'none';
+            document.getElementById('addForm').style.display = modifyOption.value === 'add' ? 'block' : 'none';
+        });
+    </script>
+</body>
+
+</html>
