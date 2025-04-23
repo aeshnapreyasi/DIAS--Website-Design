@@ -1,112 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Faculty Portal - DIAS</title>
-    <link rel="stylesheet" href="homepage.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty Portal - DIAS</title>
+  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
+<script>
+    document.getElementById('hostForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // stop form from reloading
+  
+      const classInput = document.getElementById('classesInput').value.trim();
+  
+      // Save class info to localStorage
+      localStorage.setItem('selectedClass', classInput);
+  
+      // Redirect to next page
+      window.location.href = 'mark_attendance.html';
+    });
+  </script>
+
+
 <body>
-    <header class="top-bar">
-        <div class="logo">DIAS</div>
-        <div class="user-profile">
-            <button><i class="fa-regular fa-user"></i></button>
-        </div>
-    </header>
+  <header class="top-bar">
+    <div class="logo">DIAS</div>
+    <div class="user-profile">
+      <button><i class="fa-regular fa-user"></i></button>
+    </div>
+  </header>
 
-    <main class="main-section">
-        <div class="card">
-            <h2>View Attendance</h2>
-            <select id="viewOption">
-                <option value="">Select View Type</option>
-                <option value="student">Student-wise</option>
-                <option value="class">Class-wise</option>
-                <option value="subject">Subject-wise</option>
-            </select>
+  <main class="main-container">
 
-            <div class="form-section" id="studentForm" style="display:none;">
-                <input type="text" placeholder="Enrollment No" />
-                <input type="text" placeholder="Student Name" />
-                <input type="text" placeholder="Class" />
-            </div>
+    <!-- Host Attendance -->
 
-            <div class="form-section" id="classForm" style="display:none;">
-                <select>
-                    <option>Select Class</option>
-                    <option>Class A</option>
-                    <option>Class B</option>
-                    <option>Class C</option>
-                </select>
-            </div>
+    <div class="card">
+      <h2>Host Attendance</h2>
+      <form id="hostForm" class ="horizontal-form">
+        <input type="text" placeholder="Course Code" required />
+        <input type="text" placeholder="Room No." required />
+        <input type="date" required />
+        <select required>
+          <option value="">Select Mode</option>
+          <option value="practical">Practical</option>
+          <option value="theory">Theory</option>
+        </select>
+        <input type="time" required />
+        <input type="text" placeholder="Classes (e.g. A, B+C)" required />
+        <button type="submit" class="action-btn">Host</button>
+      </form>
+    </div>
 
-            <div class="form-section" id="subjectForm" style="display:none;">
-                <select>
-                    <option>Select Subject</option>
-                    <option>Math</option>
-                    <option>Science</option>
-                    <option>English</option>
-                </select>
-                
-            </div>
-            <button class="action-btn">View</button>
-        </div>
 
-        </div>
+    <!-- View Attendance -->
 
-        
+    <div class="card">
+      <h2>View Attendance</h2>
+      <form class="horizontal-form">
+        <select id="viewOption">
+          <option value="">Select View Type</option>
+          <option value="student">Student-wise</option>
+          <option value="class">Class-wise</option>
+          <option value="subject">Subject-wise</option>
+        </select>
+        <div id="viewInputs"></div>
+        <button type="submit" class="action-btn">View</button>
+      </form>
+    </div>
 
-        <div class="card">
-            <h2>Modify Attendance</h2>
-            <select id="modifyOption">
-                <option value="">Select Modify Option</option>
-                <option value="decrease">Decrease Denominator</option>
-                <option value="add">Add Attendance</option>
-            </select>
 
-            <div class="form-section" id="decreaseForm" style="display:none;">
-                <input type="text" placeholder="Enrollment No" />
-                <input type="text" placeholder="Student Name" />
-                <select>
-                    <option>Select Subject</option>
-                    <option>Math</option>
-                    <option>Science</option>
-                    <option>English</option>
-                </select>
-            </div>
+    <!-- Modify Attendance -->
 
-            <div class="form-section" id="addForm" style="display:none;">
-                <input type="text" placeholder="Enrollment No" />
-                <input type="text" placeholder="Student Name" />
-                <select>
-                    <option>Select Subject</option>
-                    <option>Math</option>
-                    <option>Science</option>
-                    <option>English</option>
-                </select>
-            </div>
-            <button class="action-btn">Modify</button>
-        </div>
-    </main>
+    <div class="card">
+      <h2>Modify Attendance</h2>
+      <form class="horizontal-form">
+        <select id="modifyOption">
+          <option value="">Select Modify Option</option>
+          <option value="decrease">Decrease Denominator</option>
+          <option value="add">Add Attendance</option>
+        </select>
+        <div id="modifyInputs"></div>
+        <button type="submit" class="action-btn">Modify</button>
+      </form>
+    </div>
+  </main>
 
-    <script>
-        const viewOption = document.getElementById('viewOption');
-        const modifyOption = document.getElementById('modifyOption');
+  <script>
+    const viewOption = document.getElementById('viewOption');
+    const viewInputs = document.getElementById('viewInputs');
+    viewOption.addEventListener('change', () => {
+      viewInputs.innerHTML = '';
+      if (viewOption.value === 'student') {
+        viewInputs.innerHTML = `
+          <input type="text" placeholder="Enrollment No" required />
+          <input type="text" placeholder="Student Name" required />
+          <input type="text" placeholder="Class" required />
+        `;
+      } else if (viewOption.value === 'class') {
+        viewInputs.innerHTML = `
+          <select required>
+            <option>Select Class</option>
+            <option>Class A</option>
+            <option>Class B</option>
+            <option>Class C</option>
+          </select>`;
+      } else if (viewOption.value === 'subject') {
+        viewInputs.innerHTML = `
+          <select required>
+            <option>Select Subject</option>
+            <option>Math</option>
+            <option>Science</option>
+            <option>English</option>
+          </select>`;
+      }
+    });
 
-        viewOption.addEventListener('change', () => {
-            document.getElementById('studentForm').style.display = viewOption.value === 'student' ? 'block' : 'none';
-            document.getElementById('classForm').style.display = viewOption.value === 'class' ? 'block' : 'none';
-            document.getElementById('subjectForm').style.display = viewOption.value === 'subject' ? 'block' : 'none';
-        });
-
-        modifyOption.addEventListener('change', () => {
-            document.getElementById('decreaseForm').style.display = modifyOption.value === 'decrease' ? 'block' : 'none';
-            document.getElementById('addForm').style.display = modifyOption.value === 'add' ? 'block' : 'none';
-        });
-    </script>
+    const modifyOption = document.getElementById('modifyOption');
+    const modifyInputs = document.getElementById('modifyInputs');
+    modifyOption.addEventListener('change', () => {
+      modifyInputs.innerHTML = '';
+      if (modifyOption.value === 'decrease' || modifyOption.value === 'add') {
+        modifyInputs.innerHTML = `
+          <input type="text" placeholder="Enrollment No" required />
+          <input type="text" placeholder="Student Name" required />
+          <select required>
+            <option>Select Subject</option>
+            <option>Math</option>
+            <option>Science</option>
+            <option>English</option>
+          </select>`;
+      }
+    });
+  </script>
 </body>
-
 </html>
