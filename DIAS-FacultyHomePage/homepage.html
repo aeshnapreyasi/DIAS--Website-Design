@@ -22,11 +22,34 @@
     });
   </script>
 
+  <!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h3>Edit Profile</h3>
+    <form>
+      <label for="username">User Name</label>
+      <input type="text" id="username" placeholder="Enter your name" required />
+      <button type="submit">Update Profile</button>
+    </form>
+  </div>
+</div>
+
+
 
 <body>
   <header class="top-bar">
     <div class="logo">DIAS</div>
     <div class="user-profile">
+     
+      <div class="faculty-dropdown">
+        <i class="fa-solid fa-user-circle face-id-icon"></i>
+        <div class="dropdown-content" id="dropdownMenu">
+          <p><strong>Prof. Aeshna Preyasi</strong></p>
+          <a href="#">Edit Profile</a>
+        </div>
+      </div>
+
       <button type="button" class="about-btn">About</button>
     </div>
   </header>
@@ -133,5 +156,41 @@
       }
     });
   </script>
+  <script>
+    const faceIdIcon = document.querySelector('.face-id-icon');
+    const dropdown = document.getElementById('dropdownMenu');
+  
+    faceIdIcon.addEventListener('click', () => {
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    // Optional: close dropdown when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('.faculty-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  </script>
+  <script>
+    // Open modal on "Edit Profile" click
+    document.querySelector('.dropdown-content a').addEventListener('click', () => {
+      document.getElementById('editProfileModal').style.display = 'block';
+    });
+  
+    // Close modal on 'X' click
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('editProfileModal').style.display = 'none';
+    });
+  
+    // Optional: Close modal on clicking outside of modal-content
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('editProfileModal');
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+  
+  
 </body>
 </html>
