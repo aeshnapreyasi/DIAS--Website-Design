@@ -10,14 +10,14 @@
 
 <script>
     document.getElementById('hostForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // stop form from reloading
+      e.preventDefault(); 
   
       const classInput = document.getElementById('classesInput').value.trim();
   
-      // Save class info to localStorage
+      
       localStorage.setItem('selectedClass', classInput);
   
-      // Redirect to next page
+      
       window.location.href = 'mark_attendance.html';
     });
   </script>
