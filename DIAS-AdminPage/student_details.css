@@ -1,0 +1,81 @@
+/* Top bar (same as admin page) */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #003366;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .about-btn {
+    margin-left: 20px;
+    background-color: white;
+    color: #003366;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Search Container */
+  .search-container {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .search-container input {
+    padding: 8px;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .search-container button {
+    padding: 8px 12px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Table Styling */
+  .table-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #003366;
+    color: white;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Faculty Details</title>
+  <link rel="stylesheet" href="student_details.css">
+</head>
+
+<body>
+
+  <!-- Top Header -->
+  <header class="top-bar">
+    <div class="logo">DIAS</div>
+    <div class="user-profile">
+      <div class="faculty-dropdown">
+        <i class="fa-solid fa-user-circle face-id-icon"></i>
+        <div class="dropdown-content">
+          <p><strong>Admin</strong></p>
+          <a href="#">View Profile</a>
+          <a href="#">Logout</a>
+        </div>
+      </div>
+      <button type="button" class="about-btn">About</button>
+    </div>
+  </header>
+
+  <!-- Search Box -->
+  <div class="search-container">
+    <input type="text" id="searchEnrollOrScholarId" placeholder="Search by Enrollment no./scholar id">
+    <button onclick="searchFaculty()">Search</button>
+  </div>
+
+  <!-- Faculty Details Table -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Scholar id</th>
+          <th>Enrollment No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <tr>
+          <td>2200970</td>
+          <td>En22cs301060</td>
+          <td>Prof. Aeshna Preyasi</td>
+          <td>aeshna@example.com</td>
+          <td>9876543210</td>
+          <td>student</td>
+        </tr>
+        <tr>
+          <td>2200970</td>
+          <td>En22cs301061</td>
+          <td>Prof. Aryan Malhotra</td>
+          <td>aryan@example.com</td>
+          <td>9876543211</td>
+          <td>student</td>
+        </tr>
+        <tr>
+            <td>2200970</td>
+          <td>En22cs301061</td>
+          <td>Prof. Aryan Malhotra</td>
+          <td>aryan@example.com</td>
+          <td>9876543211</td>
+          <td>student</td>
+        </tr>
+        <tr>
+            <td>2200970</td>
+          <td>En22cs301061</td>
+          <td>Prof. Aryan Malhotra</td>
+          <td>aryan@example.com</td>
+          <td>9876543211</td>
+          <td>student</td>
+        </tr>
+        <tr>
+            <td>2200970</td>
+          <td>En22cs301061</td>
+          <td>Prof. Aryan Malhotra</td>
+          <td>aryan@example.com</td>
+          <td>9876543211</td>
+          <td>student</td>
+        </tr>
+    
+        <tr>
+          <td>2200970</td>
+          <td>En22cs301061</td>
+          <td>Prof. Aryan Malhotra</td>
+          <td>aryan@example.com</td>
+          <td>9876543211</td>
+          <td>student</td>
+        </tr>
+        <tr>
+          <td>2200971</td>
+          <td>En22cs301061</td>
+          <td>Prof. Aryan Malhotra</td>
+          <td>aryan@example.com</td>
+          <td>9876543211</td>
+          <td>student</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function searchFaculty() {
+      var input = document.getElementById("searchEnrollOrScholarId").value.toUpperCase();
+      var table = document.getElementById("studentTableBody");
+
+      var tr = table.getElementsByTagName("tr");
+      for (var i = 0; i < tr.length; i++) {
+        var td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          var txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(input) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+  </script>
+
+</body>
+</html>
