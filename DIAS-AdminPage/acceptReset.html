@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Accept Reset Requests</title>
     <link rel="stylesheet" href="acceptreset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
@@ -13,17 +14,23 @@
     <header class="top-bar">
         <div class="logo">DIAS</div>
         <div class="user-profile">
-            <div class="faculty-dropdown">
-                <i class="fa-solid fa-user-circle face-id-icon"></i>
-                <div class="dropdown-content">
-                    <p><strong>Admin</strong></p>
-                    <a href="#">View Profile</a>
-                    <a href="#">Logout</a>
-                </div>
+    
+          <div class="faculty-dropdown">
+            <i class="fa-solid fa-user-circle face-id-icon"></i>
+            <div class="dropdown-content" id="dropdownMenu">
+    
+              <p><strong>Prof. Aeshna Preyasi</strong></p>
+              <a href="view_profile.html" id="viewProfileBtn">View Profile</a>
+              <a href="#" id="logoutBtn">Logout</a>
             </div>
+          </div>
+    
+          <a href="about.html">
             <button type="button" class="about-btn">About</button>
+          </a>
+          
         </div>
-    </header>
+      </header>
 
     <!-- Main Content -->
     <main class="reset-main">
@@ -56,6 +63,53 @@
 
 
     </main>
+
+    <script>
+        const faceIdIcon = document.querySelector('.face-id-icon');
+        const dropdown = document.getElementById('dropdownMenu');
+        const editProfileLink = document.querySelector('.edit-profile-link'); 
+        const editProfileModal = document.getElementById('editProfileModal');
+        const closeModal = document.getElementById('closeModal');
+      
+        
+        faceIdIcon.addEventListener('click', () => {
+          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+      
+        
+        window.addEventListener('click', (e) => {
+          if (!e.target.closest('.faculty-dropdown')) {
+            dropdown.style.display = 'none';
+          }
+      
+          if (e.target === editProfileModal) {
+            editProfileModal.style.display = 'none';
+          }
+        });
+      
+        
+        document.getElementById('viewProfileBtn').addEventListener('click', () => {
+          window.location.href = 'view_profile.html'; 
+          dropdown.style.display = 'none';
+        });
+      
+        
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+          alert('Logging out...');
+          dropdown.style.display = 'none';
+          
+        });
+      
+        
+        editProfileLink.addEventListener('click', () => {
+          editProfileModal.style.display = 'block';
+        });
+      
+        
+        closeModal.addEventListener('click', () => {
+          editProfileModal.style.display = 'none';
+        });
+      </script>
 
 </body>
 

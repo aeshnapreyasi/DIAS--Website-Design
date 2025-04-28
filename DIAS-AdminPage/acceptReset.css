@@ -1,20 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
-  }
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background: linear-gradient(to right, #1d1c1cb6, #0c0b0b);
+  color: #ffffff;
+}
   
   /* Top Header */
   .top-bar {
+    width: 100%;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0c2d57;
-    color: white;
-    padding: 10px 20px;
+    background-color: #f8f1f1;
+    color: rgb(54, 53, 53);
+    margin-bottom: 20px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    position: fixed;
   }
   
   .logo {
+    color: #000;
     font-size: 24px;
     font-weight: bold;
   }
@@ -26,24 +41,62 @@ body {
   
   .faculty-dropdown {
     position: relative;
-    margin-right: 20px;
+    display: inline-block;
+    margin-right: 15px;
   }
   
   .face-id-icon {
-    font-size: 30px;
+    font-size: 25px;
+    color: rgb(54, 52, 52);
     cursor: pointer;
   }
   
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: rgb(165, 160, 160);
     color: black;
+    min-width: 250px;
     right: 0;
-    top: 35px;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    left: auto;
+    top: 50px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
     z-index: 1;
+  }
+  .dropdown-btn {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .dropdown-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown-content p {
+    margin: 0;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .dropdown-content a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
   }
   
   .faculty-dropdown:hover .dropdown-content {
@@ -51,11 +104,15 @@ body {
   }
   
   .about-btn {
-    padding: 8px 16px;
-    background-color: #e63946;
-    color: white;
-    border: none;
+    background: linear-gradient(to right, #ffffff, #0e0d0d);
+    border: 1px solid #000;
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
     cursor: pointer;
+    transition: 0.3s ease;
   }
   
   /* Main Content */
@@ -77,6 +134,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 50px;
+    color: black;
   }
   
   .student-info p {
@@ -90,20 +149,26 @@ body {
   
   .accept-btn {
     background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 14px;
+    border: 1px solid #000;
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: 0.3s ease;
   }
   
   .deny-btn {
     background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 14px;
+    border: 1px solid #000;
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: 0.3s ease;
   }
   
   .accept-btn:hover {
